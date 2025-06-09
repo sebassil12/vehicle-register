@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Vehículo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Nuevo Vehículo</h2>
+
+        <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+
+        <form action="#" th:action="@{/register-vehicle}" th:object="${vehicle}" method="post">
+            <div class="form-group">
+                <label for="plateNumber">Número de Placa:</label>
+                <input type="text" id="plateNumber" th:field="*{plateNumber}" th:classappend="${#fields.hasErrors('plateNumber')} ? 'is-invalid'">
+                <span th:if="${#fields.hasErrors('plateNumber')}" th:errors="*{plateNumber}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="make">Hecho en:</label>
+                <input type="text" id="make" th:field="*{make}" th:classappend="${#fields.hasErrors('make')} ? 'is-invalid'">
+                <span th:if="${#fields.hasErrors('make')}" th:errors="*{make}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Modelo:</label>
+                <input type="text" id="model" th:field="*{model}" th:classappend="${#fields.hasErrors('model')} ? 'is-invalid'">
+                <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Año:</label>
+                <input type="number" id="year" th:field="*{year}" th:classappend="${#fields.hasErrors('year')} ? 'is-invalid'">
+                <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <input type="text" id="color" th:field="*{color}" th:classappend="${#fields.hasErrors('color')} ? 'is-invalid'">
+                <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="error-message"></span>
+            </div>
+
+            <button type="submit" class="btn">Registrar Vehículo</button>
+        </form>
+        <p class="mt-3">
+            <a href="/login" class="link-btn">Volver al Login</a>
+        </p>
+    </div>
+</body>
+</html>
